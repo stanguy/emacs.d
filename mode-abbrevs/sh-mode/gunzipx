@@ -1,0 +1,1 @@
+gunzip -qc <FORMJUMP "filename"> | tar xvf -

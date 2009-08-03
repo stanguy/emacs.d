@@ -1,0 +1,1 @@
+write(<CURSOR><FORMJUMP "int fd">, <FORMJUMP "const void *buf">, <FORMJUMP "size_t count">)

@@ -1,0 +1,1 @@
+fgets(<FORMJUMP "buf">, sizeof(<FORMJUMP "buf">), <FORMJUMP "f">);

@@ -1,0 +1,1 @@
+typedef RETVAL (*<CURSOR>cbname) (args...);

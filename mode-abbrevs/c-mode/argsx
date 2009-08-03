@@ -1,0 +1,4 @@
+if ((argc-1) != <CURSOR>) {
+    appname = argv[0];
+    usage();
+}

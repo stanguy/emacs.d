@@ -1,0 +1,6 @@
+\begin{figure}[htbp]
+  \centering
+  \subfigure[<FORMJUMP "figure 1 title">]{\includegraphics[angle=270,width=.49\textwidth]{<FORMJUMP "image name">}\label{fig:<FORMJUMP "Figure label">}}
+  \subfigure[<FORMJUMP "figure 2 title">]{\includegraphics[angle=270,width=.49\textwidth]{<FORMJUMP "image name">}\label{fig:<FORMJUMP "Figure label">}}
+  \caption{<FORMJUMP "Caption name">}
+\end{figure}

@@ -1,0 +1,4 @@
+typedef struct <QUERY "struct name: ">
+{
+    <CURSOR>
+} <QUERY "struct name: ">;

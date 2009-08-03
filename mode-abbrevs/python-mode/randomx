@@ -1,0 +1,1 @@
+random.randint(<FORMJUMP "low_inclusive">, <FORMJUMP "high_inclusive">)

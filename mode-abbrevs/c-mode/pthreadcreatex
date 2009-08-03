@@ -1,0 +1,4 @@
+if (pthread_create(<FORMJUMP "pthread_t * thread">, NULL, <FORMJUMP "void * (*start_routine)(void *)">, <FORMJUMP "void * arg">) != 0) {
+   fprintf(stderr, "ERROR: calling pthread_create()\n");
+   exit(1);
+}

@@ -1,0 +1,1 @@
+realloc(<CURSOR>ptr, size_t size)

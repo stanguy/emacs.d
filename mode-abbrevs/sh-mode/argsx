@@ -1,0 +1,4 @@
+if [ $# -ne <FORMJUMP "<NUMARGS>"> ]; then
+    echo "usage: `basename $0` <FORMJUMP "...">"
+    exit 1
+fi

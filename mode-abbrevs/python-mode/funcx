@@ -1,0 +1,2 @@
+def <FORMJUMP "function_name">(<FORMJUMP "args">):
+    <FORMJUMP "body">
