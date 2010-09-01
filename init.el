@@ -26,7 +26,7 @@
 (define-key function-key-map [dead-circumflex]
   'compose-circumflex-map)
 ;; et puis ça c'est bien pour utiliser des trucs genre C-x 8 <
-(require 'iso-insert)
+;(require 'iso-insert)
 
 ;;* Make the sequence "C-x w" execute the `what-line' command,
 ;;* which prints the current line number in the echo area.
@@ -115,6 +115,13 @@
 (template-initialize)
 
 
+(setq load-path (append
+		 load-path
+		 (list  (concat st::lisp-dir "cucumber.el"))))
+(require 'feature-mode)
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
+
 (load "custom")
 (load "modes")
 ;(load "includer")
@@ -125,17 +132,26 @@
 (mwheel-install)
 
 
+(one-buffer-one-frame-mode nil)
 (desktop-load-default)
 (desktop-read)
 (desktop-save-mode 1)
+
+;; doesn't work as nicely as expected
+;(autoload 'dta-hook-up "desktopaid.elc" "Desktop Aid" t)
+;(dta-hook-up)
+
 (setq make-backup-files nil) 
 
 
-(require 'zenburn)
-(zenburn)
+;(require 'zenburn)
+;(zenburn)
+(color-theme-initialize)
+(color-theme-clarity)
 (setq-default cursor-type 'hbar)
 (menu-bar-mode nil)
 (tool-bar-mode nil)
+(tabbar-mode nil)
 (scroll-bar-mode nil)
 (pc-selection-mode t)
 
@@ -201,8 +217,8 @@
 (add-hook 'find-file-root-hook 'find-file-root-header-warning)
 
 ;(set-default-font "Bitstream Vera Sans Mono-11")
-(set-default-font "DejaVu Sans Mono-11")
-(set-face-background 'mmm-default-submode-face "#6e625a")
+;(set-default-font "DejaVu Sans Mono-11")
+;(set-face-background 'mmm-default-submode-face "#6e625a")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.

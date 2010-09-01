@@ -20,18 +20,26 @@
 
 ;;;
 
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+
 (autoload 'ruby-mode "ruby-mode" "Load ruby-mode")
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
-;(require 'ruby-electric) 
-;(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode))) 
+(require 'ruby-electric) 
+(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode))) 
 
+(add-to-list 'load-path "~/.emacs.d/rhtml/")
+(require 'rhtml-mode)
+
+;(require 'rvm)
+;(rvm-use "ree-1.8.7-2010.02" "mongodb")
 
 ;; if complaining about not being compiled, use: 
 ;;    emacs --batch --eval '(byte-compile-file "js2.el")'
 ;; rather than fully loading emacs and failing to compile.
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
+(setq-default js2-basic-offset 2)
 
 ;;;
 
@@ -39,25 +47,25 @@
 		 (list (concat st::lisp-dir "mmm-mode/"))
 		 load-path))
 
-(require 'mmm-auto)
+;(require 'mmm-auto)
 
-(mmm-add-classes
- '((erb-code
-    :submode ruby-mode
-    :match-face (("<%#" . mmm-comment-submode-face)
-                 ("<%=" . mmm-output-submode-face)
-                 ("<%"  . mmm-code-submode-face))
-    :front "<%[#=]?" 
-    :back "%>" 
-    :insert ((?% erb-code       nil @ "<%"  @ " " _ " " @ "%>" @)
-             (?# erb-comment    nil @ "<%#" @ " " _ " " @ "%>" @)
-             (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @))
-    )))
-(add-hook 'html-mode-hook
-          (lambda ()
-            (setq mmm-classes '(erb-code))
-            (mmm-mode-on)))
-(add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
+;; (mmm-add-classes
+;;  '((erb-code
+;;     :submode ruby-mode
+;;     :match-face (("<%#" . mmm-comment-submode-face)
+;;                  ("<%=" . mmm-output-submode-face)
+;;                  ("<%"  . mmm-code-submode-face))
+;;     :front "<%[#=]?" 
+;;     :back "%>" 
+;;     :insert ((?% erb-code       nil @ "<%"  @ " " _ " " @ "%>" @)
+;;              (?# erb-comment    nil @ "<%#" @ " " _ " " @ "%>" @)
+;;              (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @))
+;;     )))
+;; (add-hook 'html-mode-hook
+;;           (lambda ()
+;;             (setq mmm-classes '(erb-code))
+;;             (mmm-mode-on)))
+;; (add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
 
 
 ;;;

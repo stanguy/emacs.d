@@ -44,7 +44,7 @@
 
 ;; load up abbrevs for these modes
 (require 'msf-abbrev)
-(setq msf-abbrev-verbose t) ;; optional
+;(setq msf-abbrev-verbose t) ;; optional
 (setq msf-abbrev-root "~/.emacs.d/mode-abbrevs")
 ;(global-set-key (kbd "C-c l") 'msf-abbrev-goto-root)
 ;(global-set-key (kbd "C-c a") 'msf-abbrev-define-new-abbrev-this-mode)
