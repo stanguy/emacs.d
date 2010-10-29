@@ -27,6 +27,16 @@
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
 (require 'ruby-electric) 
 (add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode))) 
+;; removed from ruby-mode but used by -electric?
+(defun ruby-insert-end () 
+  "Insert \"end\" at point and reindent current line." 
+  (interactive) 
+  (insert "end") 
+  (ruby-indent-line t) 
+  (end-of-line))
+
+(add-to-list 'auto-mode-alist '("Gemfile" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
 
 (add-to-list 'load-path "~/.emacs.d/rhtml/")
 (require 'rhtml-mode)
