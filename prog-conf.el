@@ -29,6 +29,9 @@
 (add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
 
 
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+
+
 ;; if complaining about not being compiled, use: 
 ;;    emacs --batch --eval '(byte-compile-file "js2.el")'
 ;; rather than fully loading emacs and failing to compile.
