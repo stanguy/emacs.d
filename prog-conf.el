@@ -31,8 +31,13 @@
 ;; rather than fully loading emacs and failing to compile.
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq js2-bounce-indent-p t)
 
 
+(setq load-path (append
+		 (list (concat st::lisp-dir "rhtml/"))
+		 load-path))
+(autoload 'rhtml-mode "rhtml-mode" "Load RHTML mode")
 ;;;
 
 (setq load-path (append
@@ -53,11 +58,11 @@
              (?# erb-comment    nil @ "<%#" @ " " _ " " @ "%>" @)
              (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @))
     )))
-(add-hook 'html-mode-hook
-          (lambda ()
-            (setq mmm-classes '(erb-code))
-            (mmm-mode-on)))
-(add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
+;(add-hook 'html-mode-hook
+;          (lambda ()
+;            (setq mmm-classes '(erb-code))
+;            (mmm-mode-on)))
+;(add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
 
 
 ;;;
