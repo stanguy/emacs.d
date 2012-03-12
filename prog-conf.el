@@ -43,6 +43,11 @@
 
 ;(require 'rvm)
 ;(rvm-use "ree-1.8.7-2010.02" "mongodb")
+(autoload 'coffee-mode "coffee-mode" "Load coffee-mode")
+(add-to-list 'auto-mode-alist '("\\.coffee\\'" . coffee-mode))
+
+
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 
 ;; if complaining about not being compiled, use: 
 ;;    emacs --batch --eval '(byte-compile-file "js2.el")'
@@ -50,32 +55,37 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq-default js2-basic-offset 2)
+(setq js2-bounce-indent-p t)
 
+(setq load-path (append
+		 (list (concat st::lisp-dir "rhtml/"))
+		 load-path))
+(autoload 'rhtml-mode "rhtml-mode" "Load RHTML mode")
 ;;;
 
 (setq load-path (append
 		 (list (concat st::lisp-dir "mmm-mode/"))
 		 load-path))
 
-;(require 'mmm-auto)
+(require 'mmm-auto)
 
-;; (mmm-add-classes
-;;  '((erb-code
-;;     :submode ruby-mode
-;;     :match-face (("<%#" . mmm-comment-submode-face)
-;;                  ("<%=" . mmm-output-submode-face)
-;;                  ("<%"  . mmm-code-submode-face))
-;;     :front "<%[#=]?" 
-;;     :back "%>" 
-;;     :insert ((?% erb-code       nil @ "<%"  @ " " _ " " @ "%>" @)
-;;              (?# erb-comment    nil @ "<%#" @ " " _ " " @ "%>" @)
-;;              (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @))
-;;     )))
-;; (add-hook 'html-mode-hook
-;;           (lambda ()
-;;             (setq mmm-classes '(erb-code))
-;;             (mmm-mode-on)))
-;; (add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
+(mmm-add-classes
+ '((erb-code
+    :submode ruby-mode
+    :match-face (("<%#" . mmm-comment-submode-face)
+                 ("<%=" . mmm-output-submode-face)
+                 ("<%"  . mmm-code-submode-face))
+    :front "<%[#=]?" 
+    :back "%>" 
+    :insert ((?% erb-code       nil @ "<%"  @ " " _ " " @ "%>" @)
+             (?# erb-comment    nil @ "<%#" @ " " _ " " @ "%>" @)
+             (?= erb-expression nil @ "<%=" @ " " _ " " @ "%>" @))
+    )))
+;(add-hook 'html-mode-hook
+;          (lambda ()
+;            (setq mmm-classes '(erb-code))
+;            (mmm-mode-on)))
+;(add-to-list 'auto-mode-alist '("\\.rhtml$" . html-mode))
 
 
 ;;;
