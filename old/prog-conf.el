@@ -22,6 +22,7 @@
 
 (autoload 'ruby-mode "ruby-mode" "Load ruby-mode")
 (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
 ;(require 'ruby-electric) 
 ;(add-hook 'ruby-mode-hook (lambda () (ruby-electric-mode))) 
 
