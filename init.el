@@ -1,84 +1,18 @@
 (message "init.el")
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
 
-
-(global-set-key (kbd "C-+") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-
-(when (eq window-system 'ns)
-  (setq mac-command-modifier 'meta)
-  (setq mac-option-modifier nil)
-  (set-default-font "-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-fontset-auto5")
+(cond 
+ ((<= emacs-major-version 23)
+  (setq st::init-lisp-dir (expand-file-name "~/.emacs.d/23/")))
+ ((= emacs-major-version 24)
+  (setq st::init-lisp-dir (expand-file-name "~/.emacs.d/24/")))
 )
 
+(setq  load-path (append load-path (list st::init-lisp-dir)))
 
-(tool-bar-mode -1)
-(powerline-default-theme)
-(load-theme 'zen-and-art t)
-
-
-(require 'grizzl)
-(projectile-global-mode)
-(setq projectile-enable-caching t)
- (setq projectile-completion-system 'grizzl)
- ;; Press Command-p for fuzzy find in project
- (global-set-key (kbd "M-p") 'projectile-find-file)
- ;; Press Command-b for fuzzy switch buffer
- (global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
-
-(require 'git-gutter)
-;; If you enable global minor mode
-(global-git-gutter-mode t)
-(setq git-gutter:modified-sign " ")
-(setq git-gutter:added-sign " ")
-(setq git-gutter:deleted-sign " ")
-(set-face-background 'git-gutter:modified "purple") ;; background color
-(set-face-background 'git-gutter:added "SeaGreen")
-(set-face-background 'git-gutter:deleted "firebrick4")
-
-(autoload 'rainbow-turn-on "rainbow-mode" "Enable rainbow mode colour literal overlays")
-(dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook scss-mode-hook))
-  (add-hook hook 'rainbow-turn-on))
-
-(require 'smartparens-config)
-(require 'smartparens-ruby)
- (smartparens-global-mode)
- (show-smartparens-global-mode t)
- (sp-with-modes '(rhtml-mode)
-   (sp-local-pair "<" ">")
-   (sp-local-pair "<%" "%>"))
-
-(defun font-lock-comment-annotations ()
-  "Highlight a bunch of well known comment annotations.
-
-This functions should be added to the hooks of major modes for programming."
-  (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):"
-          1 font-lock-warning-face t))))
-
-(add-hook 'prog-mode-hook 'font-lock-comment-annotations)
-(add-hook 'prog-mode-hook 'subword-mode)
-(global-hl-line-mode +1)
-
-
-(require 'highlight-indentation)
-(add-hook 'prog-mode-hook
-	  (lambda () (highlight-indentation-current-column-mode)))
-
-
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-
+(load "01base.el")
+(load "02system.el")
+(load "03decorations.el")
+(load "04prog.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
