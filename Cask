@@ -1,6 +1,5 @@
 (source melpa)
 (source gnu)
-(source marmalade)
 
 (depends-on "ac-js2")
 (depends-on "adaptive-wrap")
@@ -17,9 +16,11 @@
 (depends-on "findr")
 (depends-on "floobits")
 (depends-on "git-commit-mode")
+(depends-on "git-gutter")
 (depends-on "git-rebase-mode")
 (depends-on "grizzl")
 (depends-on "highlight")
+(depends-on "highlight-chars")
 (depends-on "highlight-indentation")
 (depends-on "idle-highlight")
 (depends-on "inf-ruby")
@@ -54,4 +55,3 @@
 (depends-on "web-mode")
 (depends-on "wrap-region")
 (depends-on "zen-and-art-theme")
-(depends-on "git-gutter")
