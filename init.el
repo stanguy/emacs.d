@@ -1,5 +1,7 @@
 (message "init.el")
 
+(setq inhibit-splash-screen t)
+
 (cond 
  ((<= emacs-major-version 23)
   (setq st::init-lisp-dir (expand-file-name "~/.emacs.d/23/")))
