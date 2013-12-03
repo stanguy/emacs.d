@@ -10,3 +10,6 @@
 (setq make-backup-files nil)
 
 (server-start)
+
+
+(global-set-key [(control f3)] 'highlight-symbol-at-point)

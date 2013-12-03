@@ -19,6 +19,7 @@
 (depends-on "highlight")
 (depends-on "highlight-chars")
 (depends-on "highlight-indentation")
+(depends-on "highlight-symbol")
 (depends-on "inf-ruby")
 (depends-on "js2-mode")
 (depends-on "magit")
