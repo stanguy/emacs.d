@@ -22,6 +22,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes (quote ("06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "854e99f94a7dae0446b2f8c1de3ceeaeeb60f9085b1880e63def87ae81190869" "0c311fb22e6197daba9123f43da98f273d2bfaeeaeb653007ad1ee77f0003037" default)))
+ '(php-mode-coding-style (quote symfony2))
  '(powerline-default-separator (quote wave)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
