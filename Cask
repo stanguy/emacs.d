@@ -31,6 +31,7 @@
 (depends-on "multi-term")
 (depends-on "noctilux-theme")
 (depends-on "pallet")
+(depends-on "php-mode")
 (depends-on "pkg-info")
 (depends-on "popup")
 (depends-on "powerline")

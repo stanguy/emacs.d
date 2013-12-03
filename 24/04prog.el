@@ -8,6 +8,25 @@
 (global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
 
 
+(defalias 'perl-mode 'cperl-mode)
+(setq-default
+ cperl-electric-parens t 
+ cperl-electric-keywords t
+ cperl-indent-level 4
+ cperl-hairy t
+ cperl-auto-newline t
+ cperl-mode-map nil
+ cperl-extra-newline-before-brace nil
+ )
+
+(setq c-default-style
+      '((php-mode . "symfony2")
+	(java-mode . "java")
+	(awk-mode . "awk")
+	(other . "gnu")))
+
+(add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
+
 (autoload 'rainbow-turn-on "rainbow-mode" "Enable rainbow mode colour literal overlays")
 (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook scss-mode-hook))
   (add-hook hook 'rainbow-turn-on))
