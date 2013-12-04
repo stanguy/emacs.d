@@ -76,6 +76,25 @@
 
 (add-hook 'c-mode-common-hook '(lambda () (c-toggle-auto-state 1)))
 
+(defun ome-create-newline-and-enter-sexp (&rest _ignored)
+    "Open a new brace or bracket expression, with relevant newlines and indent. "
+    (message "pouet")
+    (previous-line)
+    (indent-according-to-mode)
+    (forward-line)
+    (newline)
+    (indent-according-to-mode)
+    (forward-line -1)
+    (indent-according-to-mode))
+
+(dolist (mode '(c-mode c++-mode java-mode js2-mode sh-mode php-mode))
+    (sp-local-pair mode
+                   "{"
+                   nil
+                   :post-handlers
+                   '((ome-create-newline-and-enter-sexp "RET"))))
+
+
 (autoload 'rainbow-turn-on "rainbow-mode" "Enable rainbow mode colour literal overlays")
 (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook scss-mode-hook))
   (add-hook hook 'rainbow-turn-on))
