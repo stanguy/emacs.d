@@ -17,6 +17,12 @@
 (setq compilation-window-height 15)
 ;;force compilation to scroll
 (setq compilation-scroll-output t)
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (toggle-read-only)
+  (ansi-color-apply-on-region (point-min) (point-max))
+  (toggle-read-only))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
 (defalias 'perl-mode 'cperl-mode)
 (setq-default
