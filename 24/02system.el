@@ -8,6 +8,7 @@
 )
 
 (setq make-backup-files nil)
+(savehist-mode 1)
 
 (server-start)
 
