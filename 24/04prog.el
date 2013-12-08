@@ -113,7 +113,8 @@ This functions should be added to the hooks of major modes for programming."
    nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):"
           1 font-lock-warning-face t))))
 
-(add-hook 'prog-mode-hook 'font-lock-comment-annotations)
+(dolist (hook '(php-mode ruby-mode python-mode))
+  (add-hook hook 'font-lock-comment-annotations))
 (add-hook 'prog-mode-hook 'subword-mode)
 (global-hl-line-mode +1)
 
