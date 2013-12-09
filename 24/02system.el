@@ -7,10 +7,14 @@
   (set-default-font "Inconsolata-12")
 )
 
+(setq-default cursor-type 'bar)
+
 (setq make-backup-files nil)
 (savehist-mode 1)
 
 (server-start)
 
+(delete-selection-mode 1)
 
 (global-set-key [(control f3)] 'highlight-symbol-at-point)
+(windmove-default-keybindings 'meta)
