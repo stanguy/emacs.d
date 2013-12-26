@@ -139,3 +139,6 @@ This functions should be added to the hooks of major modes for programming."
 (setq web-mode-engines-alist
       '(("django" . "\\.html\\.twig\\'"))
       )
+
+(add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.pages\\.inc\\'" . php-mode))
