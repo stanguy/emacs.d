@@ -119,8 +119,9 @@ This functions should be added to the hooks of major modes for programming."
 (global-hl-line-mode +1)
 
 (require 'highlight-indentation)
-(add-hook 'prog-mode-hook
-	  (lambda () (highlight-indentation-current-column-mode)))
+(dolist (hook '(php-mode ruby-mode python-mode))
+  (add-hook hook
+            (lambda () (highlight-indentation-current-column-mode))))
 
 
 
@@ -132,5 +133,9 @@ This functions should be added to the hooks of major modes for programming."
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html\\.twig\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+(setq web-mode-engines-alist
+      '(("django" . "\\.html\\.twig\\'"))
+      )
