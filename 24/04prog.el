@@ -123,7 +123,7 @@ This functions should be added to the hooks of major modes for programming."
   (add-hook hook
             (lambda () (highlight-indentation-current-column-mode))))
 
-
+(custom-set-variables '(coffee-tab-width 4))
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -142,3 +142,6 @@ This functions should be added to the hooks of major modes for programming."
 
 (add-to-list 'auto-mode-alist '("\\.module\\'" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.pages\\.inc\\'" . php-mode))
+
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
