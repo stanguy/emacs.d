@@ -2,6 +2,7 @@
 (source gnu)
 
 (depends-on "ac-js2")
+(depends-on "ample-theme")
 (depends-on "adaptive-wrap")
 (depends-on "auto-complete")
 (depends-on "calfw")
