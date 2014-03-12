@@ -7,6 +7,7 @@
 (depends-on "calfw")
 (depends-on "cask")
 (depends-on "coffee-mode")
+(depends-on "company")
 (depends-on "dash")
 (depends-on "drag-stuff")
 (depends-on "ecb")

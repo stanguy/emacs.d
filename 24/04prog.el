@@ -145,3 +145,5 @@ This functions should be added to the hooks of major modes for programming."
 
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(global-company-mode)
+(setq company-idle-delay 0.4)
