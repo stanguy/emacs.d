@@ -1,3 +1,4 @@
+(require 'cl)
 (require 'grizzl)
 (projectile-global-mode)
 (setq projectile-enable-caching t)
