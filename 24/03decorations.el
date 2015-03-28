@@ -1,6 +1,8 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(menu-bar-mode -1)
+(when st::menu-disable
+  (menu-bar-mode -1)
+  )
 (powerline-default-theme)
 (load-theme 'zen-and-art t)
 
