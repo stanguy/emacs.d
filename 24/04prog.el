@@ -148,5 +148,10 @@ This functions should be added to the hooks of major modes for programming."
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
+(add-hook 'go-mode-hook
+          (lambda ()
+            (setq tab-width 4)
+            ))
+
 (global-company-mode)
 (setq company-idle-delay 0.4)
