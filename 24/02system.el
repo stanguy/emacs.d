@@ -21,3 +21,5 @@
 
 (global-set-key [(control f3)] 'highlight-symbol-at-point)
 (windmove-default-keybindings 'meta)
+
+ (setq ring-bell-function 'ignore)
