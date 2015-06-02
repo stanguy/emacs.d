@@ -5,6 +5,7 @@
   (setq mac-option-modifier nil)
   (set-default-font "-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-fontset-auto5")
   (setq st::menu-disable nil)
+  (exec-path-from-shell-initialize)
 )
 (when (eq window-system 'x)
   (set-default-font "Inconsolata-12")
