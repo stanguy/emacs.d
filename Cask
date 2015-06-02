@@ -49,3 +49,4 @@
 (depends-on "wrap-region")
 (depends-on "yaml-mode")
 (depends-on "zen-and-art-theme")(depends-on "exec-path-from-shell")
+(depends-on "anzu")
