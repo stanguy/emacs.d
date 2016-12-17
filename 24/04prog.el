@@ -1,8 +1,17 @@
 (require 'cl)
-(require 'grizzl)
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+(ido-grid-mode 1)
+
+
 (projectile-global-mode)
 (setq projectile-enable-caching t)
-(setq projectile-completion-system 'grizzl)
+(setq projectile-completion-system 'ido)
 ;; Press Command-p for fuzzy find in project
 (global-set-key (kbd "M-p") 'projectile-find-file)
 ;; Press Command-b for fuzzy switch buffer
