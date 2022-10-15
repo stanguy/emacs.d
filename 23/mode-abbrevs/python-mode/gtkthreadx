@@ -1,5 +1,0 @@
-gtk.threads_init()
-
-gtk.threads_enter()
-<CURSOR>
-gtk.threads_leave()

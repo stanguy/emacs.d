@@ -1,7 +1,0 @@
-if ((f = fopen(<FORMJUMP "char * filename">, <FORMJUMP "mode">)) == NULL) {
-    std::cerr << "ERROR: opening file"
-              << " at " << __FILE__ << ":" << __LINE__
-              << std::endl << std::flush;
-    exit(1);
-}
-<FORMJUMP "rest">

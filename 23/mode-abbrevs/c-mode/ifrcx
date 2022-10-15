@@ -1,3 +1,0 @@
-if ((rc = <CURSOR>) != 0) {
-    goto Exit;
-}

@@ -1,4 +1,0 @@
-<FORMJUMP "type"> <FORMJUMP "method_name">()
-{
-    <FORMJUMP "body">
-}

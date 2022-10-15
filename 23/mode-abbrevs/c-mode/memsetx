@@ -1,1 +1,0 @@
-memset(<FORMJUMP "void * s">, <FORMJUMP "int c">, <FORMJUMP "size_t n">);

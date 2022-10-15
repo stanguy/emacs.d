@@ -1,4 +1,0 @@
-if (pthread_cond_signal(<FORMJUMP "pthread_cond_t *cond">) != 0) {
-    fprintf(stderr, "ERROR: calling pthread_cond_signal()\n");
-    exit(1);
-}

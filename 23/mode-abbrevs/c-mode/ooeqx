@@ -1,4 +1,0 @@
-bool operator==(const <CURSOR>Type & i) const
-{
-    
-}

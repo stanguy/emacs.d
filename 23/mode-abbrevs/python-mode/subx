@@ -1,1 +1,0 @@
-re.sub(<CURSOR>pattern, replacement, string)

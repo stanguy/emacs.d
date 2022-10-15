@@ -1,6 +1,0 @@
-if (fseeko(<FORMJUMP "FILE *stream">, <FORMJUMP "off_t offset">, SEEK_SET) !=0 ) {
-    std::cerr << "ERROR: fseeko() "
-              << " at " << __FILE__ << ":" << __LINE__
-              << std::endl << std::flush;
-    exit(1);
-}

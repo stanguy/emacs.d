@@ -1,4 +1,0 @@
-typedef enum <QUERY "struct name: ">
-{
-    <CURSOR>
-} <QUERY "struct name: ">;

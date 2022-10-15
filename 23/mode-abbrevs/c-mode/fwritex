@@ -1,7 +1,0 @@
-if (fwrite(<FORMJUMP "void *ptr">, <FORMJUMP "size_t size">, 1, <FORMJUMP "f">) < 1) {
-    std::cerr << "ERROR: calling fwrite()"
-              << " at " << __FILE__ << ":" << __LINE__
-              << std::endl << std::flush;
-    exit(1);
-}
-<FORMJUMP "rest">

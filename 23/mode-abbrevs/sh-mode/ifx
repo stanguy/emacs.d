@@ -1,3 +1,0 @@
-if [ <FORMJUMP "expression"> ]; then
-    <FORMJUMP ":">
-fi

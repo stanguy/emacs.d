@@ -1,1 +1,0 @@
-std::cerr << <CURSOR> << std::endl;

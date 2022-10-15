@@ -1,6 +1,0 @@
-if (fread(<FORMJUMP "void *ptr">, <FORMJUMP "size_t size">, <FORMJUMP "size_t nmemb">, <FORMJUMP "FILE *stream">) < 1) {
-    std::cerr << "ERROR: calling fread()"
-              << " at " << __FILE__ << ":" << __LINE__
-              << std::endl << std::flush;
-    exit(1);
-}

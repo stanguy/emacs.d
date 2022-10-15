@@ -1,2 +1,0 @@
-for <FORMJUMP "var"> in <FORMJUMP "iterable">:
-    <FORMJUMP "body">

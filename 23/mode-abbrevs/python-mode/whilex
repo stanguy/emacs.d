@@ -1,2 +1,0 @@
-while <FORMJUMP "condition">:
-    <FORMJUMP "body">

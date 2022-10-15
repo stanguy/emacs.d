@@ -1,4 +1,0 @@
-if (pthread_join(<FORMJUMP "pthread_t th">, <FORMJUMP "void **thread_return">) != 0) {
-    fprintf(stderr, "ERROR: calling pthread_join()\n");
-    exit(1);
-}
