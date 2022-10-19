@@ -4,6 +4,8 @@
 ;;; Code:
 
 
+(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+
 (defvar file-name-handler-alist-old file-name-handler-alist)
 (setq package-enable-at-startup nil
       file-name-handler-alist nil
@@ -36,6 +38,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+; To limit clutter on the modeline
 (use-package diminish :demand t :ensure t)
 
 (use-package ido
@@ -53,84 +56,14 @@
   :ensure t
   :commands (ag ag-regexp ag-project))
 
-(use-package pastelmac-theme
-  :disabled t
-  :ensure t
-  :config (load-theme 'pastelmac t))
-
-(use-package poet-theme
-  :ensure t
-  :config
-  (load-theme 'poet t)
-  (set-face-attribute 'default nil :family "Inconsolata" :height 120)
-  (set-face-attribute 'fixed-pitch nil :family "Inconsolata")
-  (set-face-attribute 'variable-pitch nil :family "Baskerville")
-  )
+(require 'init-themes)
 
 (use-package recentf-ext
   :ensure t
   :defer 1)
 
-(use-package helm
-  :ensure t
-  :bind (("M-a" . helm-M-x)
-         ("C-x C-f" . helm-find-files)
-         ("C-x f" . helm-recentf)
-         ("M-/" . helm-dabbrev)
-         ("M-y" . helm-show-kill-ring)
-         ("C-x b" . helm-buffers-list))
-  :bind (:map helm-map
-	      ("M-i" . helm-previous-line)
-	      ("M-k" . helm-next-line)
-	      ("M-I" . helm-previous-page)
-	      ("M-K" . helm-next-page)
-	      ("M-h" . helm-beginning-of-buffer)
-	      ("M-H" . helm-end-of-buffer))
-  :config (progn
-	    (setq helm-buffers-fuzzy-matching t
-		  helm-buffer-max-length nil ; returns to max buffer length
-		  )
-            (helm-mode 1)))
-(use-package helm-descbinds
-  :ensure t
-  :bind ("C-h b" . helm-descbinds))
-(use-package helm-files
-  :bind (:map helm-find-files-map
-	      ("M-i" . nil)
-	      ("M-k" . nil)
-	      ("M-I" . nil)
-	      ("M-K" . nil)
-	      ("M-h" . nil)
-	      ("M-H" . nil)))
-(use-package helm-swoop
-  :ensure t
-  :bind (("M-m" . helm-swoop)
-	 ("M-M" . helm-swoop-back-to-last-point))
-  :init
-  (bind-key "M-m" 'helm-swoop-from-isearch isearch-mode-map))
-(use-package helm-ag
-  :ensure t
-  :bind ("M-p" . helm-projectile-ag)
-  :commands (helm-ag helm-projectile-ag)
-  :init
-  (helm-projectile-on)
-  (setq helm-ag-insert-at-point 'symbol))
-
-(use-package projectile
-  :ensure t
-  :bind-keymap ("C-c p" . projectile-command-map)
-  :config
-  (projectile-mode)
-  (setq projectile-enable-caching t
-	projectile-project-compilation-cmd "")
-;  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-  )
-
-(use-package helm-projectile
-  :ensure t
-  :bind ("M-t" . helm-projectile-find-file)
-  :config
-  (helm-projectile-on))
+(require 'init-helm)
+(require 'init-projectile)
 
 (use-package avy
   :ensure t
@@ -145,49 +78,7 @@
   :init (beacon-mode 1)
   :commands beacon-mode)
 
-(use-package enh-ruby-mode
-  :ensure t
-  :defer t
-  :mode (("\\.rb\\'"       . enh-ruby-mode)
-         ("\\.ru\\'"       . enh-ruby-mode)
-	 ("\\.jbuilder\\'" . enh-ruby-mode)
-         ("\\.gemspec\\'"  . enh-ruby-mode)
-         ("\\.rake\\'"     . enh-ruby-mode)
-         ("Rakefile\\'"    . enh-ruby-mode)
-         ("Gemfile\\'"     . enh-ruby-mode)
-         ("Guardfile\\'"   . enh-ruby-mode)
-         ("Capfile\\'"     . enh-ruby-mode)
-         ("Vagrantfile\\'" . enh-ruby-mode))
-  :config (progn
-	    (setq enh-ruby-indent-level 2
-		  enh-ruby-add-encoding-comment-on-save nil
-		  enh-ruby-deep-indent-paren nil
-		  enh-ruby-bounce-deep-indent t
-		  enh-ruby-hanging-indent-level 2)
-	    (setq enh-ruby-program "/usr/bin/ruby")
-	    (setq ruby-insert-encoding-magic-comment nil)))
-
-(use-package rubocop
-  :ensure t
-  :defer t
-  :init (add-hook 'ruby-mode-hook 'rubocop-mode))
-
-
-(use-package minitest
-  :ensure t
-  :defer t)
-
-(use-package rspec-mode
-  :ensure t
-  :defer t)
-
-(use-package rbenv
-  :ensure t
-  :defer t
-  :init (setq rbenv-show-active-ruby-in-modeline nil)
-  :config (progn
-            (global-rbenv-mode)
-            (add-hook 'enh-ruby-mode-hook 'rbenv-use-corresponding)))
+(require 'init-ruby)
 
 (use-package flycheck
   :ensure t
@@ -196,35 +87,12 @@
             (setq flycheck-shellcheck-follow-sources nil)
             (global-flycheck-mode 1)))
 
-(use-package magit
-  :ensure t
-  :defer 2
-  :bind (("C-x g" . magit-status)))
-
-(use-package git-timemachine            ; Go back in Git time
-  :ensure t
-  :bind (("C-c g t" . git-timemachine)))
-
-(use-package git-gutter
-  :ensure t
-  :defer 2
-  :config
-  (global-git-gutter-mode t)
-  (setq git-gutter:modified-sign " "
-	git-gutter:added-sign " "
-	git-gutter:deleted-sign " ")
-  (set-face-background 'git-gutter:modified "purple") ;; background color
-  (set-face-background 'git-gutter:added "SeaGreen")
-  (set-face-background 'git-gutter:deleted "firebrick4"))
-
-(use-package rainbow-mode               ; Fontify color values in code
-  :ensure t
-  :bind (("C-c t r" . rainbow-mode))
-  :config (add-hook 'css-mode-hook #'rainbow-mode))
+(require 'init-git)
 
 (use-package smartparens
   :ensure t
   :defer 2
+  :diminish smartparens-mode
   :config
   (smartparens-global-mode)
   (show-smartparens-global-mode t)
@@ -238,6 +106,7 @@
   :defer 12
   :bind* ("<f8>" . column-enforce-mode))
 
+; to highlight multiple search results
 (use-package anzu
   :ensure t
   :defer 6
@@ -252,6 +121,7 @@
 (use-package company
   :ensure t
   :defer 3
+  :diminish company-mode
   :init
   (dolist (hook '(emacs-lisp-mode-hook
                   c-mode-common-hook))
@@ -301,6 +171,7 @@
   :commands origami-mode)
 
 (use-package yasnippet
+  :ensure t
   :demand t
   :diminish yas-minor-mode
   :bind (("C-c y d" . yas-load-directory)
@@ -343,29 +214,8 @@
   :bind (("C-z" . undo)     ; Zap to character isn't helpful
          ("C-S-z" . redo)))
 
-(use-package yaml-mode
-  :ensure t
-  :mode ("\\.ya?ml\\'" . yaml-mode))
+(require 'init-formattedfiles)
 
-(use-package nxml-mode
-  :config
-  (setq nxml-slash-auto-complete-flag t)
-  )
-
-(use-package markdown-mode
-  :ensure t
-  :mode ("\\.md\\'" . markdown-mode))
-
-(use-package web-mode
-  :ensure t
-  :mode (("\\.erb\\'" . web-mode)
-	 ("\\.mustache\\'" . web-mode)
-	 ("\\.html?\\'" . web-mode)
-         ("\\.php\\'" . web-mode))
-  :config (progn
-            (setq web-mode-markup-indent-offset 2
-		  web-mode-css-indent-offset 2
-		  web-mode-code-indent-offset 2)))
 
 (use-package go-mode
   :defer t
@@ -410,28 +260,10 @@
   (setq clang-format-binary "clang-format-6.0")
   )
 
-;; JavaScript and TypeScript
-(use-package js2-mode
-  :ensure t
-  :init
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
+(require 'init-web)
 
-
-(use-package tide
-  :ensure t
-  :after (typescript-mode company flycheck)
-  :hook ((typescript-mode . tide-setup)
-         (typescript-mode . tide-hl-identifier-mode)
-         (before-save . tide-formater-before-save)))
-
-(use-package web-mode
-  :ensure t
-  :init
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
-  (setq web-mode-enable-current-element-highlight t))
-
-(use-package elixir-mode)
+(use-package elixir-mode
+  :ensure t)
 
 (use-package org
   :config
@@ -534,7 +366,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(clang-format-executable "clang-format-6.0"))
+ '(clang-format-executable "clang-format-6.0")
+ '(package-selected-packages
+   '(dockerfile-mode yaml-mode web-mode use-package undo-tree treemacs tide smartparens rubocop rspec-mode recentf-ext rbenv rainbow-mode popwin poet-theme pastelmac-theme origami olivetti minitest markdown-mode magit js2-mode ido-grid-mode helm-swoop helm-projectile helm-descbinds helm-ag go-mode git-timemachine git-gutter enh-ruby-mode diminish darkburn-theme company column-enforce-mode clang-format cheatsheet beacon anzu ag)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
