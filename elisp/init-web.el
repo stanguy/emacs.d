@@ -21,6 +21,8 @@
 ;; JavaScript and TypeScript
 (use-package js2-mode
   :ensure t
+  :custom
+  (js2-strict-missing-semi-warning nil)
   :init
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
 
@@ -31,6 +33,11 @@
   :hook ((typescript-mode . tide-setup)
          (typescript-mode . tide-hl-identifier-mode)
          (before-save . tide-formater-before-save)))
+
+(use-package vue-mode
+  :mode "\\.vue\\'"
+  :ensure t
+  )
 
 (use-package rainbow-mode               ; Fontify color values in code
   :ensure t
