@@ -41,10 +41,11 @@
 ; To limit clutter on the modeline
 (use-package diminish :demand t :ensure t)
 
+;; « lets you interactively do things with buffers and files »
 (use-package ido
   :config
   (setq ido-enable-flex-matching t)
-  ;(ido-everywhere t)
+                                        ;(ido-everywhere t)
   (ido-mode 1))
 
 (use-package ido-grid-mode
@@ -52,6 +53,7 @@
   :config
   (ido-grid-mode 1))
 
+;; silver searcher front
 (use-package ag
   :ensure t
   :commands (ag ag-regexp ag-project))
@@ -65,12 +67,15 @@
 (require 'init-helm)
 (require 'init-projectile)
 
+;; « Jump to arbitrary positions in visible text and select text
+;; quickly. »
 (use-package avy
   :ensure t
   :bind*  ("C-." . avy-goto-char-timer)
   :config (avy-setup-default)
   )
 
+;; Highlight cursor on scrolling window
 (use-package beacon
   :ensure t
   :defer 10
@@ -96,11 +101,14 @@
   :config
   (smartparens-global-mode)
   (show-smartparens-global-mode t)
+  (show-paren-mode t)
   (sp-with-modes '(rhtml-mode)
     (sp-local-pair "<" ">")
     (sp-local-pair "<%" "%>"))
   )
 
+
+;; marking long lines
 (use-package column-enforce-mode
   :ensure t
   :defer 12
@@ -118,6 +126,7 @@
 (use-package subword
   :init (global-subword-mode))
 
+;; project management
 (use-package company
   :ensure t
   :defer 3
@@ -175,42 +184,8 @@
   :diminish whitespace-mode)
 
 (require 'init-formattedfiles)
-
-
-(use-package go-mode
-  :defer t
-  :ensure t
-  :mode ("\\.go$" . go-mode))
-
-(use-package cperl-mode
-  :mode (("\\.pl$" . cperl-mode)
-	 ("\\.pm$" . cperl-mode))
-  :config
-  (setq-default
-   cperl-electric-parens t 
-   cperl-electric-keywords t
-   cperl-indent-level 4
-   cperl-hairy t
-   cperl-auto-newline t
-   cperl-mode-map nil
-   cperl-extra-newline-before-brace nil)
-  )
-
-(use-package plantuml-mode
-  :mode "\\.plantuml\\'")
-
 (require 'init-c)
 (require 'init-web)
-
-(use-package elixir-mode
-  :ensure t)
-
-(use-package org
-  :config
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((dot . t))))
-
 (require 'init-dev)
 (require 'init-ui)
 
